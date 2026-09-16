@@ -1,0 +1,54 @@
+# Asmary Field Services — Upstream Tender Intelligence Dashboard
+
+سامانه تحت وب هوشمند رصد و تحلیل مناقصات بالادستی صنعت نفت (شبکه شانا) ویژه شرکت خدمات میدان آسماری.
+
+## ویژگی‌ها (Features)
+- **داشبورد تعاملی (Interactive Web Dashboard):** رابط کاربری فارسی و مدرن همراه با آمار لحظه‌ای.
+- **دکمه پایش ۵۰ صفحه‌ای:** با یک کلیک، ۵۰ صفحه اخیر مناقصات شانا (~۱,۰۰۰ آگهی مناقصه) به صورت زنده استخراج و فیلتر می‌شود.
+- **فیلترهای تخصصی خدمات آسماری:**
+  - مته‌های PDC و ابزارآلات میلینگ / سایدترک / ویپ‌استک
+  - نمودارگیری چاه‌پیمایی (Open-Hole & Cased-Hole Logging / PLT)
+  - ارزیابی یکپارچگی چاه (EMDS, MFC, MTT, SNL)
+  - مانده‌یابی و برش درون‌چاهی (FPIT, String Shot Back-Off)
+  - انواع پلاگ درون‌چاهی (Bridge Plugs) و پکرها
+  - آزمایش چاه و جریان‌سنجی چندفازی (MPFM)
+  - مطالعات سنگ و سیال مخزن (RCAL / SCAL / PVT)
+- **حذف آگهی‌های غیرمرتبط:** فیلتر خودکار مناقصات عمومی غیرنفتی (خودروهای استیجاری، کارهای ساختمانی، آشپزخانه و رستوران).
+
+---
+
+## نحوه راه‌اندازی در سیستم شما (Quick Start)
+
+### روش اول: اجرای آسان با یک کلیک (ویندوز)
+فایل `run.bat` را دو بار کلیک کنید. پیش‌نیازها به طور خودکار بررسی شده و سرور روی آدرس `http://localhost:5000` اجرا خواهد شد.
+
+### روش دوم: اجرای دستی از طریق ترمینال / PowerShell
+1. وارد پوشه پروژه شوید:
+   ```bash
+   cd asmary_tender_web
+   ```
+2. نصب پیش‌نیازها:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. اجرای برنامه:
+   ```bash
+   python app.py
+   ```
+4. مرورگر خود را باز کرده و به آدرس زیر مراجعه فرمایید:
+   `http://localhost:5000`
+
+---
+
+## نحوه ارسال به گیت‌هاب (Push to GitHub)
+
+1. در سایت [GitHub.com](https://github.com) یک مخزن جدید (New Repository) مثلاً به نام `asmary-tender-dashboard` بسازید.
+2. در پوشه پروژه ترمینال (PowerShell) را باز کرده و دستورات زیر را وارد کنید:
+   ```bash
+   git init
+   git add .
+   git commit -m "Initial commit: Asmary Tender Intelligence Web App"
+   git branch -M main
+   git remote add origin https://github.com/YOUR_USERNAME/asmary-tender-dashboard.git
+   git push -u origin main
+   ```

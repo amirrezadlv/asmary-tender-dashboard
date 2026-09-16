@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سامانه رصد مناقصات بالادستی — شرکت آسماری</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" href="https://asmaryco.com/wp-content/uploads/2025/12/logo_asmary_white_englishandpersian6-Copy-300x143.jpg">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Top Navigation / Brand Header -->
+        <header class="navbar">
+            <div class="brand">
+                <div class="logo-box">ASMARY</div>
+                <div>
+                    <h1>شرکت خدمات میدان آسماری (Asmary Field Services)</h1>
+                    <p class="subtitle">سامانه هوشمند رصد مناقصات صنعت نفت — شبکه اطلاع‌رسانی شانا</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button id="scanBtn" class="btn btn-primary" onclick="startScan(50)">
+                    <span class="btn-icon">⚡</span>
+                    <span id="btnText">شروع پایش ۵۰ صفحه اخیر شانا</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Progress Overlay Container -->
+        <div id="progressCard" class="card progress-card hidden">
+            <div class="progress-header">
+                <div>
+                    <strong id="progressTitle">در حال پیمایش صفحات شبکه شانا...</strong>
+                    <div id="progressSub" class="text-muted">لطفاً شکیبا باشید (این عملیات حدود ۳۰ ثانیه زمان می‌برد).</div>
+                </div>
+                <div id="pageCounter" class="badge badge-accent">صفحه ۰ از ۵۰</div>
+            </div>
+            <div class="progress-bar-bg">
+                <div id="progressBar" class="progress-bar-fill" style="width: 0%;"></div>
+            </div>
+        </div>
+
+        <!-- Metrics Grid -->
+        <div class="metrics-grid">
+            <div class="card metric-card">
+                <span class="metric-icon">🎯</span>
+                <div>
+                    <div class="metric-label">مناقصات منطبق با آسماری</div>
+                    <div id="matchedCount" class="metric-value">۰</div>
+                </div>
+            </div>
+            <div class="card metric-card">
+                <span class="metric-icon">📑</span>
+                <div>
+                    <div class="metric-label">کل آگهی‌های پایش‌شده</div>
+                    <div id="totalScanned" class="metric-value">۰</div>
+                </div>
+            </div>
+            <div class="card metric-card">
+                <span class="metric-icon">🕒</span>
+                <div>
+                    <div class="metric-label">آخرین به‌روزرسانی</div>
+                    <div id="lastUpdated" class="metric-value font-sm">—</div>
+                </div>
+            </div>
+            <div class="card metric-card">
+                <span class="metric-icon">🏢</span>
+                <div>
+                    <div class="metric-label">کارفرمایان رصدشده</div>
+                    <div class="metric-value font-sm">NIDC • NISOC • IOOC • AOGC</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter & Search Bar -->
+        <div class="card filter-bar">
+            <div class="search-wrapper">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="searchInput" placeholder="جستجو بر اساس نام پروژه، کارفرما، مته، لاگینگ، پلاگ، بک‌آف...">
+            </div>
+            <div class="filter-pills" id="serviceFilters">
+                <button class="pill active" data-filter="all">همه تخصص‌ها</button>
+                <button class="pill" data-filter="PDC Bits & Milling">مته PDC و میلینگ</button>
+                <button class="pill" data-filter="Well Logging (Open & Cased Hole)">نمودارگیری (Logging)</button>
+                <button class="pill" data-filter="Well Integrity & Casing Inspection">یکپارچگی چاه (Integrity)</button>
+                <button class="pill" data-filter="Pipe Recovery (FPIT & Back-Off)">مانده‌یابی (FPIT/Back-Off)</button>
+                <button class="pill" data-filter="Plugs & Packers">پلاگ و پکر</button>
+                <button class="pill" data-filter="Surface Testing & MPFM">آزمایش چاه و MPFM</button>
+                <button class="pill" data-filter="Core & PVT Laboratory">آزمایشگاه مغزه و PVT</button>
+            </div>
+        </div>
+
+        <!-- Tenders Table -->
+        <div class="card table-card">
+            <div class="table-header-title">
+                <h2>فهرست فرصت‌های مناقصه شناسایی‌شده</h2>
+                <span id="filteredCountBadge" class="badge badge-light">۰ مورد</span>
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 50px;" class="text-center">#</th>
+                            <th>موضوع مناقصه / فراخوان</th>
+                            <th>کارفرما</th>
+                            <th>تخصص‌های مرتبط آسماری</th>
+                            <th class="text-center">شماره مناقصه</th>
+                            <th class="text-center">تاریخ درج</th>
+                            <th class="text-center">مشاهده</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tenderTableBody">
+                        <tr>
+                            <td colspan="7" class="text-center text-muted py-5">
+                                در حال بارگذاری داده‌ها یا منتظر شروع اسکن...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <footer class="footer">
+            طراحی‌شده جهت شرکت خدمات مهندسی و میدان آسماری (Asmary Co.) | پایش خودکار مناقصات وزارت نفت
+        </footer>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
