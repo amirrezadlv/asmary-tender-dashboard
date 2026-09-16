@@ -39,16 +39,3 @@
    `http://localhost:5000`
 
 ---
-
-## نحوه ارسال به گیت‌هاب (Push to GitHub)
-
-1. در سایت [GitHub.com](https://github.com) یک مخزن جدید (New Repository) مثلاً به نام `asmary-tender-dashboard` بسازید.
-2. در پوشه پروژه ترمینال (PowerShell) را باز کرده و دستورات زیر را وارد کنید:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit: Asmary Tender Intelligence Web App"
-   git branch -M main
-   git remote add origin https://github.com/YOUR_USERNAME/asmary-tender-dashboard.git
-   git push -u origin main
-   ```
