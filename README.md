@@ -1,5 +1,9 @@
 # Asmary Field Services — Upstream Tender Intelligence Dashboard
 
+<a href="https://amirrezadlv.github.io/asmary-tender-dashboard/">
+  <img src="https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Live Demo" />
+</a>
+
 سامانه تحت وب هوشمند رصد و تحلیل مناقصات بالادستی صنعت نفت (شبکه شانا) ویژه شرکت خدمات میدان آسماری.
 
 ## ویژگی‌ها (Features)
