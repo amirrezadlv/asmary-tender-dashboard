@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ø³Ø§Ù…Ø§Ù†Ù‡ Ø±ØµØ¯ Ù…Ù†Ø§Ù‚ØµØ§Øª Ø¨Ø§Ù„Ø§Ø¯Ø³ØªÛŒ â€” Ø´Ø±Ú©Øª Ø¢Ø³Ù…Ø§Ø±ÛŒ</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="icon" href="https://asmaryco.com/wp-content/uploads/2025/12/logo_asmary_white_englishandpersian6-Copy-300x143.jpg">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Top Navigation / Brand Header -->
+        <header class="navbar">
+            <div class="brand">
+                <div class="logo-box">ASMARY</div>
+                <div>
+                    <h1>Ø´Ø±Ú©Øª Ø®Ø¯Ù…Ø§Øª Ù…ÛŒØ¯Ø§Ù† Ø¢Ø³Ù…Ø§Ø±ÛŒ (Asmary Field Services)</h1>
+                    <p class="subtitle">Ø³Ø§Ù…Ø§Ù†Ù‡ Ù‡ÙˆØ´Ù…Ù†Ø¯ Ø±ØµØ¯ Ù…Ù†Ø§Ù‚ØµØ§Øª ØµÙ†Ø¹Øª Ù†ÙØª â€” Ø´Ø¨Ú©Ù‡ Ø§Ø·Ù„Ø§Ø¹â€ŒØ±Ø³Ø§Ù†ÛŒ Ø´Ø§Ù†Ø§</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button id="scanBtn" class="btn btn-primary" onclick="startScan(50)">
+                    <span class="btn-icon">âš¡</span>
+                    <span id="btnText">Ø´Ø±ÙˆØ¹ Ù¾Ø§ÛŒØ´ ÛµÛ° ØµÙØ­Ù‡ Ø§Ø®ÛŒØ± Ø´Ø§Ù†Ø§</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Progress Overlay Container -->
+        <div id="progressCard" class="card progress-card hidden">
+            <div class="progress-header">
+                <div>
+                    <strong id="progressTitle">Ø¯Ø± Ø­Ø§Ù„ Ù¾ÛŒÙ…Ø§ÛŒØ´ ØµÙØ­Ø§Øª Ø´Ø¨Ú©Ù‡ Ø´Ø§Ù†Ø§...</strong>
+                    <div id="progressSub" class="text-muted">Ù„Ø·ÙØ§Ù‹ Ø´Ú©ÛŒØ¨Ø§ Ø¨Ø§Ø´ÛŒØ¯ (Ø§ÛŒÙ† Ø¹Ù…Ù„ÛŒØ§Øª Ø­Ø¯ÙˆØ¯ Û³Û° Ø«Ø§Ù†ÛŒÙ‡ Ø²Ù…Ø§Ù† Ù…ÛŒâ€ŒØ¨Ø±Ø¯).</div>
+                </div>
+                <div id="pageCounter" class="badge badge-accent">ØµÙØ­Ù‡ Û° Ø§Ø² ÛµÛ°</div>
+            </div>
+            <div class="progress-bar-bg">
+                <div id="progressBar" class="progress-bar-fill" style="width: 0%;"></div>
+            </div>
+        </div>
+
+        <!-- Metrics Grid -->
+        <div class="metrics-grid">
+            <div class="card metric-card">
+                <span class="metric-icon">ðŸŽ¯</span>
+                <div>
+                    <div class="metric-label">Ù…Ù†Ø§Ù‚ØµØ§Øª Ù…Ù†Ø·Ø¨Ù‚ Ø¨Ø§ Ø¢Ø³Ù…Ø§Ø±ÛŒ</div>
+                    <div id="matchedCount" class="metric-value">Û°</div>
+                </div>
+            </div>
+            <div class="card metric-card">
+                <span class="metric-icon">ðŸ“‘</span>
+                <div>
+                    <div class="metric-label">Ú©Ù„ Ø¢Ú¯Ù‡ÛŒâ€ŒÙ‡Ø§ÛŒ Ù¾Ø§ÛŒØ´â€ŒØ´Ø¯Ù‡</div>
+                    <div id="totalScanned" class="metric-value">Û°</div>
+                </div>
+            </div>
+            <div class="card metric-card">
+                <span class="metric-icon">ðŸ•’</span>
+                <div>
+                    <div class="metric-label">Ø¢Ø®Ø±ÛŒÙ† Ø¨Ù‡â€ŒØ±ÙˆØ²Ø±Ø³Ø§Ù†ÛŒ</div>
+                    <div id="lastUpdated" class="metric-value font-sm">â€”</div>
+                </div>
+            </div>
+            <div class="card metric-card">
+                <span class="metric-icon">ðŸ¢</span>
+                <div>
+                    <div class="metric-label">Ú©Ø§Ø±ÙØ±Ù…Ø§ÛŒØ§Ù† Ø±ØµØ¯Ø´Ø¯Ù‡</div>
+                    <div class="metric-value font-sm">NIDC â€¢ NISOC â€¢ IOOC â€¢ AOGC</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter & Search Bar -->
+        <div class="card filter-bar">
+            <div class="search-wrapper">
+                <span class="search-icon">ðŸ”</span>
+                <input type="text" id="searchInput" placeholder="Ø¬Ø³ØªØ¬Ùˆ Ø¨Ø± Ø§Ø³Ø§Ø³ Ù†Ø§Ù… Ù¾Ø±ÙˆÚ˜Ù‡ØŒ Ú©Ø§Ø±ÙØ±Ù…Ø§ØŒ Ù…ØªÙ‡ØŒ Ù„Ø§Ú¯ÛŒÙ†Ú¯ØŒ Ù¾Ù„Ø§Ú¯ØŒ Ø¨Ú©â€ŒØ¢Ù...">
+            </div>
+            <div class="filter-pills" id="serviceFilters">
+                <button class="pill active" data-filter="all">Ù‡Ù…Ù‡ ØªØ®ØµØµâ€ŒÙ‡Ø§</button>
+                <button class="pill" data-filter="PDC Bits & Milling">Ù…ØªÙ‡ PDC Ùˆ Ù…ÛŒÙ„ÛŒÙ†Ú¯</button>
+                <button class="pill" data-filter="Well Logging (Open & Cased Hole)">Ù†Ù…ÙˆØ¯Ø§Ø±Ú¯ÛŒØ±ÛŒ (Logging)</button>
+                <button class="pill" data-filter="Well Integrity & Casing Inspection">ÛŒÚ©Ù¾Ø§Ø±Ú†Ú¯ÛŒ Ú†Ø§Ù‡ (Integrity)</button>
+                <button class="pill" data-filter="Pipe Recovery (FPIT & Back-Off)">Ù…Ø§Ù†Ø¯Ù‡â€ŒÛŒØ§Ø¨ÛŒ (FPIT/Back-Off)</button>
+                <button class="pill" data-filter="Plugs & Packers">Ù¾Ù„Ø§Ú¯ Ùˆ Ù¾Ú©Ø±</button>
+                <button class="pill" data-filter="Surface Testing & MPFM">Ø¢Ø²Ù…Ø§ÛŒØ´ Ú†Ø§Ù‡ Ùˆ MPFM</button>
+                <button class="pill" data-filter="Core & PVT Laboratory">Ø¢Ø²Ù…Ø§ÛŒØ´Ú¯Ø§Ù‡ Ù…ØºØ²Ù‡ Ùˆ PVT</button>
+            </div>
+        </div>
+
+        <!-- Tenders Table -->
+        <div class="card table-card">
+            <div class="table-header-title">
+                <h2>ÙÙ‡Ø±Ø³Øª ÙØ±ØµØªâ€ŒÙ‡Ø§ÛŒ Ù…Ù†Ø§Ù‚ØµÙ‡ Ø´Ù†Ø§Ø³Ø§ÛŒÛŒâ€ŒØ´Ø¯Ù‡</h2>
+                <span id="filteredCountBadge" class="badge badge-light">Û° Ù…ÙˆØ±Ø¯</span>
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 50px;" class="text-center">#</th>
+                            <th>Ù…ÙˆØ¶ÙˆØ¹ Ù…Ù†Ø§Ù‚ØµÙ‡ / ÙØ±Ø§Ø®ÙˆØ§Ù†</th>
+                            <th>Ú©Ø§Ø±ÙØ±Ù…Ø§</th>
+                            <th>ØªØ®ØµØµâ€ŒÙ‡Ø§ÛŒ Ù…Ø±ØªØ¨Ø· Ø¢Ø³Ù…Ø§Ø±ÛŒ</th>
+                            <th class="text-center">Ø´Ù…Ø§Ø±Ù‡ Ù…Ù†Ø§Ù‚ØµÙ‡</th>
+                            <th class="text-center">ØªØ§Ø±ÛŒØ® Ø¯Ø±Ø¬</th>
+                            <th class="text-center">Ù…Ø´Ø§Ù‡Ø¯Ù‡</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tenderTableBody">
+                        <tr>
+                            <td colspan="7" class="text-center text-muted py-5">
+                                Ø¯Ø± Ø­Ø§Ù„ Ø¨Ø§Ø±Ú¯Ø°Ø§Ø±ÛŒ Ø¯Ø§Ø¯Ù‡â€ŒÙ‡Ø§ ÛŒØ§ Ù…Ù†ØªØ¸Ø± Ø´Ø±ÙˆØ¹ Ø§Ø³Ú©Ù†...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <footer class="footer">
+            Ø·Ø±Ø§Ø­ÛŒâ€ŒØ´Ø¯Ù‡ Ø¬Ù‡Øª Ø´Ø±Ú©Øª Ø®Ø¯Ù…Ø§Øª Ù…Ù‡Ù†Ø¯Ø³ÛŒ Ùˆ Ù…ÛŒØ¯Ø§Ù† Ø¢Ø³Ù…Ø§Ø±ÛŒ (Asmary Co.) | Ù¾Ø§ÛŒØ´ Ø®ÙˆØ¯Ú©Ø§Ø± Ù…Ù†Ø§Ù‚ØµØ§Øª ÙˆØ²Ø§Ø±Øª Ù†ÙØª
+        </footer>
+    </div>
+
+    <script src="static/app.js"></script>
+</body>
+</html>
