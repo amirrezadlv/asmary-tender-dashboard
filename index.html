@@ -1,130 +1,259 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ø³Ø§Ù…Ø§Ù†Ù‡ Ø±ØµØ¯ Ù…Ù†Ø§Ù‚ØµØ§Øª Ø¨Ø§Ù„Ø§Ø¯Ø³ØªÛŒ â€” Ø´Ø±Ú©Øª Ø¢Ø³Ù…Ø§Ø±ÛŒ</title>
+    <title>سامانه رصد مناقصات بالادستی — شرکت آسماری</title>
     <link rel="stylesheet" href="static/style.css">
     <link rel="icon" href="https://asmaryco.com/wp-content/uploads/2025/12/logo_asmary_white_englishandpersian6-Copy-300x143.jpg">
 </head>
 <body>
     <div class="app-layout">
-        <!-- Top Navigation / Brand Header -->
         <header class="navbar">
             <div class="brand">
                 <div class="logo-box">ASMARY</div>
                 <div>
-                    <h1>Ø´Ø±Ú©Øª Ø®Ø¯Ù…Ø§Øª Ù…ÛŒØ¯Ø§Ù† Ø¢Ø³Ù…Ø§Ø±ÛŒ (Asmary Field Services)</h1>
-                    <p class="subtitle">Ø³Ø§Ù…Ø§Ù†Ù‡ Ù‡ÙˆØ´Ù…Ù†Ø¯ Ø±ØµØ¯ Ù…Ù†Ø§Ù‚ØµØ§Øª ØµÙ†Ø¹Øª Ù†ÙØª â€” Ø´Ø¨Ú©Ù‡ Ø§Ø·Ù„Ø§Ø¹â€ŒØ±Ø³Ø§Ù†ÛŒ Ø´Ø§Ù†Ø§</p>
+                    <h1>شرکت خدمات میدان آسماری (Asmary Field Services)</h1>
+                    <p class="subtitle">سامانه هوشمند رصد مناقصات صنعت نفت — شبکه اطلاع‌رسانی شانا</p>
                 </div>
             </div>
             <div class="header-actions">
                 <button id="scanBtn" class="btn btn-primary" onclick="startScan(50)">
-                    <span class="btn-icon">âš¡</span>
-                    <span id="btnText">Ø´Ø±ÙˆØ¹ Ù¾Ø§ÛŒØ´ ÛµÛ° ØµÙØ­Ù‡ Ø§Ø®ÛŒØ± Ø´Ø§Ù†Ø§</span>
+                    <span class="btn-icon">⚡</span>
+                    <span id="btnText">شروع پایش ۵۰ صفحه اخیر شانا</span>
                 </button>
             </div>
         </header>
 
-        <!-- Progress Overlay Container -->
-        <div id="progressCard" class="card progress-card hidden">
-            <div class="progress-header">
-                <div>
-                    <strong id="progressTitle">Ø¯Ø± Ø­Ø§Ù„ Ù¾ÛŒÙ…Ø§ÛŒØ´ ØµÙØ­Ø§Øª Ø´Ø¨Ú©Ù‡ Ø´Ø§Ù†Ø§...</strong>
-                    <div id="progressSub" class="text-muted">Ù„Ø·ÙØ§Ù‹ Ø´Ú©ÛŒØ¨Ø§ Ø¨Ø§Ø´ÛŒØ¯ (Ø§ÛŒÙ† Ø¹Ù…Ù„ÛŒØ§Øª Ø­Ø¯ÙˆØ¯ Û³Û° Ø«Ø§Ù†ÛŒÙ‡ Ø²Ù…Ø§Ù† Ù…ÛŒâ€ŒØ¨Ø±Ø¯).</div>
-                </div>
-                <div id="pageCounter" class="badge badge-accent">ØµÙØ­Ù‡ Û° Ø§Ø² ÛµÛ°</div>
-            </div>
-            <div class="progress-bar-bg">
-                <div id="progressBar" class="progress-bar-fill" style="width: 0%;"></div>
-            </div>
-        </div>
-
-        <!-- Metrics Grid -->
         <div class="metrics-grid">
             <div class="card metric-card">
-                <span class="metric-icon">ðŸŽ¯</span>
+                <span class="metric-icon">🎯</span>
                 <div>
-                    <div class="metric-label">Ù…Ù†Ø§Ù‚ØµØ§Øª Ù…Ù†Ø·Ø¨Ù‚ Ø¨Ø§ Ø¢Ø³Ù…Ø§Ø±ÛŒ</div>
-                    <div id="matchedCount" class="metric-value">Û°</div>
+                    <div class="metric-label">مناقصات منطبق با آسماری</div>
+                    <div id="matchedCount" class="metric-value">۱۰</div>
                 </div>
             </div>
             <div class="card metric-card">
-                <span class="metric-icon">ðŸ“‘</span>
+                <span class="metric-icon">📑</span>
                 <div>
-                    <div class="metric-label">Ú©Ù„ Ø¢Ú¯Ù‡ÛŒâ€ŒÙ‡Ø§ÛŒ Ù¾Ø§ÛŒØ´â€ŒØ´Ø¯Ù‡</div>
-                    <div id="totalScanned" class="metric-value">Û°</div>
+                    <div class="metric-label">کل آگهی‌های پایش‌شده</div>
+                    <div id="totalScanned" class="metric-value">۱۹۷۵</div>
                 </div>
             </div>
             <div class="card metric-card">
-                <span class="metric-icon">ðŸ•’</span>
+                <span class="metric-icon">🕒</span>
                 <div>
-                    <div class="metric-label">Ø¢Ø®Ø±ÛŒÙ† Ø¨Ù‡â€ŒØ±ÙˆØ²Ø±Ø³Ø§Ù†ÛŒ</div>
-                    <div id="lastUpdated" class="metric-value font-sm">â€”</div>
+                    <div class="metric-label">آخرین به‌روزرسانی</div>
+                    <div id="lastUpdated" class="metric-value font-sm">شهریور ۱۴۰۵</div>
                 </div>
             </div>
             <div class="card metric-card">
-                <span class="metric-icon">ðŸ¢</span>
+                <span class="metric-icon">🏢</span>
                 <div>
-                    <div class="metric-label">Ú©Ø§Ø±ÙØ±Ù…Ø§ÛŒØ§Ù† Ø±ØµØ¯Ø´Ø¯Ù‡</div>
-                    <div class="metric-value font-sm">NIDC â€¢ NISOC â€¢ IOOC â€¢ AOGC</div>
+                    <div class="metric-label">کارفرمایان رصدشده</div>
+                    <div class="metric-value font-sm">NIDC • NISOC • IOOC • AOGC</div>
                 </div>
             </div>
         </div>
 
-        <!-- Filter & Search Bar -->
         <div class="card filter-bar">
             <div class="search-wrapper">
-                <span class="search-icon">ðŸ”</span>
-                <input type="text" id="searchInput" placeholder="Ø¬Ø³ØªØ¬Ùˆ Ø¨Ø± Ø§Ø³Ø§Ø³ Ù†Ø§Ù… Ù¾Ø±ÙˆÚ˜Ù‡ØŒ Ú©Ø§Ø±ÙØ±Ù…Ø§ØŒ Ù…ØªÙ‡ØŒ Ù„Ø§Ú¯ÛŒÙ†Ú¯ØŒ Ù¾Ù„Ø§Ú¯ØŒ Ø¨Ú©â€ŒØ¢Ù...">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="searchInput" placeholder="جستجو بر اساس نام پروژه، کارفرما، مته، لاگینگ، پلاگ، بک‌آف...">
             </div>
             <div class="filter-pills" id="serviceFilters">
-                <button class="pill active" data-filter="all">Ù‡Ù…Ù‡ ØªØ®ØµØµâ€ŒÙ‡Ø§</button>
-                <button class="pill" data-filter="PDC Bits & Milling">Ù…ØªÙ‡ PDC Ùˆ Ù…ÛŒÙ„ÛŒÙ†Ú¯</button>
-                <button class="pill" data-filter="Well Logging (Open & Cased Hole)">Ù†Ù…ÙˆØ¯Ø§Ø±Ú¯ÛŒØ±ÛŒ (Logging)</button>
-                <button class="pill" data-filter="Well Integrity & Casing Inspection">ÛŒÚ©Ù¾Ø§Ø±Ú†Ú¯ÛŒ Ú†Ø§Ù‡ (Integrity)</button>
-                <button class="pill" data-filter="Pipe Recovery (FPIT & Back-Off)">Ù…Ø§Ù†Ø¯Ù‡â€ŒÛŒØ§Ø¨ÛŒ (FPIT/Back-Off)</button>
-                <button class="pill" data-filter="Plugs & Packers">Ù¾Ù„Ø§Ú¯ Ùˆ Ù¾Ú©Ø±</button>
-                <button class="pill" data-filter="Surface Testing & MPFM">Ø¢Ø²Ù…Ø§ÛŒØ´ Ú†Ø§Ù‡ Ùˆ MPFM</button>
-                <button class="pill" data-filter="Core & PVT Laboratory">Ø¢Ø²Ù…Ø§ÛŒØ´Ú¯Ø§Ù‡ Ù…ØºØ²Ù‡ Ùˆ PVT</button>
+                <button class="pill active" data-filter="all">همه تخصص‌ها</button>
+                <button class="pill" data-filter="PDC Bits & Milling">مته PDC و میلینگ</button>
+                <button class="pill" data-filter="Well Logging (Open & Cased Hole)">نمودارگیری (Logging)</button>
+                <button class="pill" data-filter="Well Integrity & Casing Inspection">یکپارچگی چاه (Integrity)</button>
+                <button class="pill" data-filter="Pipe Recovery (FPIT & Back-Off)">مانده‌یابی (FPIT/Back-Off)</button>
+                <button class="pill" data-filter="Plugs & Packers">پلاگ و پکر</button>
+                <button class="pill" data-filter="Surface Testing & MPFM">آزمایش چاه و MPFM</button>
+                <button class="pill" data-filter="Core & PVT Laboratory">آزمایشگاه مغزه و PVT</button>
             </div>
         </div>
 
-        <!-- Tenders Table -->
         <div class="card table-card">
             <div class="table-header-title">
-                <h2>ÙÙ‡Ø±Ø³Øª ÙØ±ØµØªâ€ŒÙ‡Ø§ÛŒ Ù…Ù†Ø§Ù‚ØµÙ‡ Ø´Ù†Ø§Ø³Ø§ÛŒÛŒâ€ŒØ´Ø¯Ù‡</h2>
-                <span id="filteredCountBadge" class="badge badge-light">Û° Ù…ÙˆØ±Ø¯</span>
+                <h2>فهرست فرصت‌های مناقصه شناسایی‌شده</h2>
+                <span id="filteredCountBadge" class="badge badge-light">۱۰ مورد</span>
             </div>
             <div class="table-responsive">
                 <table>
                     <thead>
                         <tr>
                             <th style="width: 50px;" class="text-center">#</th>
-                            <th>Ù…ÙˆØ¶ÙˆØ¹ Ù…Ù†Ø§Ù‚ØµÙ‡ / ÙØ±Ø§Ø®ÙˆØ§Ù†</th>
-                            <th>Ú©Ø§Ø±ÙØ±Ù…Ø§</th>
-                            <th>ØªØ®ØµØµâ€ŒÙ‡Ø§ÛŒ Ù…Ø±ØªØ¨Ø· Ø¢Ø³Ù…Ø§Ø±ÛŒ</th>
-                            <th class="text-center">Ø´Ù…Ø§Ø±Ù‡ Ù…Ù†Ø§Ù‚ØµÙ‡</th>
-                            <th class="text-center">ØªØ§Ø±ÛŒØ® Ø¯Ø±Ø¬</th>
-                            <th class="text-center">Ù…Ø´Ø§Ù‡Ø¯Ù‡</th>
+                            <th>موضوع مناقصه / فراخوان</th>
+                            <th>کارفرما</th>
+                            <th>تخصص‌های مرتبط آسماری</th>
+                            <th class="text-center">شماره مناقصه</th>
+                            <th class="text-center">تاریخ درج</th>
+                            <th class="text-center">مشاهده</th>
                         </tr>
                     </thead>
                     <tbody id="tenderTableBody">
-                        <tr>
-                            <td colspan="7" class="text-center text-muted py-5">
-                                Ø¯Ø± Ø­Ø§Ù„ Ø¨Ø§Ø±Ú¯Ø°Ø§Ø±ÛŒ Ø¯Ø§Ø¯Ù‡â€ŒÙ‡Ø§ ÛŒØ§ Ù…Ù†ØªØ¸Ø± Ø´Ø±ÙˆØ¹ Ø§Ø³Ú©Ù†...
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
         <footer class="footer">
-            Ø·Ø±Ø§Ø­ÛŒâ€ŒØ´Ø¯Ù‡ Ø¬Ù‡Øª Ø´Ø±Ú©Øª Ø®Ø¯Ù…Ø§Øª Ù…Ù‡Ù†Ø¯Ø³ÛŒ Ùˆ Ù…ÛŒØ¯Ø§Ù† Ø¢Ø³Ù…Ø§Ø±ÛŒ (Asmary Co.) | Ù¾Ø§ÛŒØ´ Ø®ÙˆØ¯Ú©Ø§Ø± Ù…Ù†Ø§Ù‚ØµØ§Øª ÙˆØ²Ø§Ø±Øª Ù†ÙØª
+            طراحی‌شده جهت شرکت خدمات مهندسی و میدان آسماری (Asmary Co.) | پایش خودکار مناقصات وزارت نفت
         </footer>
     </div>
 
-    <script src="static/app.js"></script>
+    <script>
+    const INITIAL_TENDERS = [
+        {
+            "title": "خرید TENDER NO.: 08-38-0440049/PDC BITS 4-1/8 & 5-7/8 & 6-1/8 & 8-1/2 & 12-1/4 & 12-1/2 IN شرکت ملی مناطق نفتخیزجنوب",
+            "client": "شرکت ملی مناطق نفت‌خیز جنوب (NISOC)",
+            "matched_services": ["PDC Bits & Milling"],
+            "tender_id": "0440049",
+            "date": "25 شهریور 1405",
+            "link": "https://www.shana.ir/tender/2770143/TENDER-NO-08-38-0440049-PDC-BITS-4-1-8-5-7-8-6-1-8-8-1-2"
+        },
+        {
+            "title": "خدمات عمومی کابل نمودارگیری شرکت ملی حفاری ایران",
+            "client": "شرکت ملی حفاری ایران (NIDC)",
+            "matched_services": ["Well Logging (Open & Cased Hole)"],
+            "tender_id": "درج نشده",
+            "date": "21 شهریور 1405",
+            "link": "https://www.shana.ir/tender/2700104/کابل-نمودارگیری"
+        },
+        {
+            "title": "خدمات عمومی MEASUREMENT LOGGING WHILE DRILLING (APS) 0507048026 شرکت ملی حفاری ایران",
+            "client": "شرکت ملی حفاری ایران (NIDC)",
+            "matched_services": ["Well Logging (Open & Cased Hole)"],
+            "tender_id": "0507048026",
+            "date": "9 شهریور 1405",
+            "link": "https://www.shana.ir/tender/2584994/MEASUREMENT-LOGGING-WHILE-DRILLING-APS-0507048026"
+        },
+        {
+            "title": "خرید TENDER NO.: 08-38-0440008/PDC BIT 4-1/” & 5-7/8” شرکت ملی مناطق نفتخیزجنوب",
+            "client": "شرکت ملی مناطق نفت‌خیز جنوب (NISOC)",
+            "matched_services": ["PDC Bits & Milling"],
+            "tender_id": "0440008",
+            "date": "17 مرداد 1405",
+            "link": "https://www.shana.ir/tender/2476472/TENDER-NO-08-38-0440008-PDC-BIT-4-1-5-7-8"
+        },
+        {
+            "title": "خدمات عمومی 0510084 ویپ استاک شرکت ملی حفاری ایران",
+            "client": "شرکت ملی حفاری ایران (NIDC)",
+            "matched_services": ["PDC Bits & Milling"],
+            "tender_id": "0510084",
+            "date": "17 مرداد 1405",
+            "link": "https://www.shana.ir/tender/2470118/0510084-ویپ-استاک"
+        },
+        {
+            "title": "خدمات عمومی PRESSURE CONTROL EQUIPMENT 5K FOR WELL LOGGING SERVICES0407048071 شرکت ملی حفاری ایران",
+            "client": "شرکت ملی حفاری ایران (NIDC)",
+            "matched_services": ["Well Logging (Open & Cased Hole)"],
+            "tender_id": "درج نشده",
+            "date": "10 مرداد 1405",
+            "link": "https://www.shana.ir/tender/2415771/PRESSURE-CONTROL-EQUIPMENT-5K-FOR-WELL-LOGGING-SERVICES0407048071"
+        },
+        {
+            "title": "خدمات عمومی P/F:MUD LOGGING UNIT, GEO-DATA & GEOLOG0545027 شرکت ملی حفاری ایران",
+            "client": "شرکت ملی حفاری ایران (NIDC)",
+            "matched_services": ["Well Logging (Open & Cased Hole)"],
+            "tender_id": "درج نشده",
+            "date": "29 تیر 1405",
+            "link": "https://www.shana.ir/tender/2337783/P-F-MUD-LOGGING-UNIT-GEO-DATA-GEOLOG0545027"
+        },
+        {
+            "title": "خدمات عمومی FULL SET TOOLS OF BAKER-TYPE AND DATA ACQUISITION SYSTEM FOR WELL LOGGING SERVICES0407048034 شرکت ملی حفاری ایران",
+            "client": "شرکت ملی حفاری ایران (NIDC)",
+            "matched_services": ["Well Logging (Open & Cased Hole)"],
+            "tender_id": "درج نشده",
+            "date": "20 تیر 1405",
+            "link": "https://www.shana.ir/tender/2297099/FULL-SET-TOOLS-OF-BAKER-TYPE-AND-DATA-ACQUISITION-SYSTEM-FOR"
+        },
+        {
+            "title": "خدمات عمومی 7” TUBING CONVEYED HYDRAULIC SET RETRIEVABLE BRIDGE PLUG WITH OVER SHOT0407048083 شرکت ملی حفاری ایران",
+            "client": "شرکت ملی حفاری ایران (NIDC)",
+            "matched_services": ["Plugs & Packers"],
+            "tender_id": "درج نشده",
+            "date": "8 تیر 1405",
+            "link": "https://www.shana.ir/tender/2202536/7-TUBING-CONVEYED-HYDRAULIC-SET-RETRIEVABLE-BRIDGE-PLUG-WITH"
+        },
+        {
+            "title": "خرید آگهی عمومی ارزیابی کیفی مناقصه گران- مناقصه عمومی دو مرحله¬ای شماره 862/1404 م م ت تأمین ویپ استاک به همراه ملزومات",
+            "client": "شرکت نفت و گاز اروندان (AOGC)",
+            "matched_services": ["PDC Bits & Milling"],
+            "tender_id": "862/1404",
+            "date": "25 خرداد 1405",
+            "link": "https://www.shana.ir/tender/2133780/آگهی-عمومی-ارزیابی-کیفی-مناقصه-گران-مناقصه-عمومی-دو-مرحله-ای"
+        }
+    ];
+
+    let allTenders = INITIAL_TENDERS;
+    let currentCategoryFilter = 'all';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        applyFilters();
+        document.getElementById('searchInput').addEventListener('input', applyFilters);
+        document.querySelectorAll('.filter-pills .pill').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-pills .pill').forEach(p => p.classList.remove('active'));
+                btn.classList.add('active');
+                currentCategoryFilter = btn.getAttribute('data-filter');
+                applyFilters();
+            });
+        });
+    });
+
+    function applyFilters() {
+        const searchVal = document.getElementById('searchInput').value.trim().toLowerCase();
+        const filtered = allTenders.filter(t => {
+            const titleMatch = t.title.toLowerCase().includes(searchVal);
+            const clientMatch = (t.client || '').toLowerCase().includes(searchVal);
+            const idMatch = (t.tender_id || '').toLowerCase().includes(searchVal);
+            const matchesSearch = !searchVal || titleMatch || clientMatch || idMatch;
+
+            let matchesCat = true;
+            if (currentCategoryFilter !== 'all') {
+                const services = t.matched_services || [];
+                matchesCat = services.includes(currentCategoryFilter);
+            }
+            return matchesSearch && matchesCat;
+        });
+
+        renderTable(filtered);
+        document.getElementById('filteredCountBadge').textContent = filtered.length + ' مورد';
+    }
+
+    function renderTable(tenders) {
+        const tbody = document.getElementById('tenderTableBody');
+        if (!tenders || tenders.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="7" class="text-center text-muted py-5">هیچ مناقصه منطبقی یافت نشد.</td></tr>';
+            return;
+        }
+
+        let rowsHtml = '';
+        tenders.forEach((t, i) => {
+            const services = t.matched_services || [];
+            const badges = services.map(s => '<span class="service-badge">' + s + '</span>').join(' ');
+
+            rowsHtml += `
+                <tr>
+                    <td class="text-center font-bold text-muted">${i + 1}</td>
+                    <td style="font-weight: 600; max-width: 400px;">${t.title}</td>
+                    <td><span class="client-tag">${t.client}</span></td>
+                    <td>${badges}</td>
+                    <td class="text-center" style="font-family: monospace;">${t.tender_id || '—'}</td>
+                    <td class="text-center">${t.date || '—'}</td>
+                    <td class="text-center">
+                        <a href="${t.link}" target="_blank" class="view-btn">مشاهده در شانا ↗</a>
+                    </td>
+                </tr>
+            `;
+        });
+        tbody.innerHTML = rowsHtml;
+    }
+
+    function startScan() {
+        alert('سامانه در بستر GitHub Pages به صورت دمو و ایستا اجرا شده است.\n\nبرای شروع خزش زنده ۵۰ صفحه اخیر شانا بدون محدودیت، پروژه را روی سیستم محلی با فایل run.bat اجرا فرمایید.');
+    }
+    </script>
 </body>
 </html>
